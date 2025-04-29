@@ -32,17 +32,32 @@ O projeto individual do módulo 2 será uma pagina onde um agente de inteligenci
 
 
 US01- Como professora, queria criar materiais acadêmicos mais interessantes para meus alunos
+</br>
 US02- Como professora, queria ganhar mais tempo corrigindo avaliações e dar respostas mais completas para meus alunos
+</br>
 US03- Como profissional na área de química, queria conseguir fazer pesquisas e projetos completos
+</br>
 
 **Análise INVEST da US02**
 
+
 I - Independente: Essa US pode ser utilisada de forma independente
+</br>
+
 N - Negociável: Não, pois ela precisa melhorar a qualidade de seus trabalhos
+</br>
+
 V - Valiosa: Permite que a professora ganhe mais tempo e aumente a qualidade dos seus materiais
+</br>
+
 E - Estimável: É curto, porque a IA faria esse trabalho em poucos minutos
+</br>
+
 S - Pequena: Essa US é suficientemente pequena para a sprint 
+</br>
+
 T - Testável: O usuário pode fazer login com e-mail e senha. Login falha com senha incorreta e exibe mensagem de erro
+</br>
 
 ---
 
