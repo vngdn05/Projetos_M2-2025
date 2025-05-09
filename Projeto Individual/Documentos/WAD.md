@@ -18,7 +18,7 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-O projeto individual do módulo 2 será uma pagina onde um agente de inteligencial artificial (IA) auxiliriará estudantes e profissinais com duvidas e matérias de química. A ideia se baseia em agentes GPT que são feitos para áreas mais especificas, ou seja, assim como existem agentes específicos para programar, eu quero criar um para química
+O projeto individual do módulo 2 será uma pagina que estudantes e professores de química possam se organizar da melhor maneira possível gerando uma produtividade elevada para a conclusão de projetos, trabalhos, provas e conseguir tirar duvidas acessando informações organizadas no site. Sendo assim, o meu projeto visa seguir a primeira opção Um agente de inteligencial artificial (IA) auxiliriará estudantes e profissinais com duvidas de matéria de química. 
 
 ---
 
@@ -65,9 +65,74 @@ T - Testável: O usuário pode fazer login com e-mail e senha. Login falha com s
 
 ### 3.1. Modelagem do banco de dados  (Semana 3)
 
-*Posicione aqui os diagramas de modelos relacionais do seu banco de dados, apresentando todos os esquemas de tabelas e suas relações. Utilize texto para complementar suas explicações, se necessário.*
+<div align="center">
+<img src="../assets/estruturaBD.png" alt="Imagem do Banco de Dados" border="0" width=100% height=100%>
+</div>
 
-*Posicione também o modelo físico com o Schema do BD (arquivo .sql)*
+```sql
+-- init.sql
+
+-- Criar extensão para suportar UUIDs, se ainda não estiver ativada
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- Criar tabela de usuários com UUID como chave primária
+CREATE TABLE IF NOT EXISTS user (
+  userId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  academico BOOLEAN NOT NULL DEFAULT FALSE,
+  email_a VARCHAR(100) UNIQUE NOT NULL,
+  senha_a VARCHAR(100) NOT NULL,
+  estudante BOOLEAN NOT NULL DEFAULT FALSE,
+  email_e VARCHAR(100) UNIQUE NOT NULL,
+  senha_e VARCHAR(100) NOT NULL,
+);
+
+CREATE TABLE IF NOT EXISTS academico (
+  academicoId PRIMARY KEY DEFAULT,
+  aulasAcademico BOOLEAN NOT NULL DEFAULT FALSE,
+  projetosAcademico BOOLEAN NOT NULL DEFAULT FALSE,
+  FOREIGN KEY (academicoId) REFERENCES user(userId) ON DELETE CASCADE,
+);
+
+CREATE TABLE IF NOT EXISTS aulas (
+  aulaId PRIMARY KEY DEFAULT,
+  nomeAula VARCHAR(100) NOT NULL,
+  tipoAula VARCHAR(50) NOT NULL,
+  aula VARCHAR(100) NOT NULL,
+  FOREIGN KEY (aulaId) REFERENCES academico(aulasAcademico) ON DELETE CASCADE,
+);
+
+CREATE TABLE IF NOT EXISTS projetos (
+  projetoId PRIMARY KEY DEFAULT,
+  nomeProjeto VARCHAR(100) NOT NULL,
+  tipoProjeto VARCHAR(50) NOT NULL,
+  projeto VARCHAR(100) NOT NULL,
+  FOREIGN KEY (projetoId) REFERENCES academico(projetosAcademico) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS estudante (
+  estudanteId PRIMARY KEY DEFAULT,
+  pesquisasEstudante BOOLEAN NOT NULL DEFAULT FALSE,
+  trabalhosEstudante BOOLEAN NOT NULL DEFAULT FALSE,
+  FOREIGN KEY (estudanteId) REFERENCES user(estudante) ON DELETE CASCADE,
+);
+
+CREATE TABLE IF NOT EXISTS pesquisas (
+  pesquisaId PRIMARY KEY DEFAULT,
+  nomePesquisa VARCHAR(100) NOT NULL,
+  tipoPesquisa VARCHAR(50) NOT NULL,
+  pesquisa VARCHAR(100) NOT NULL,
+  FOREIGN KEY (pesquisaId) REFERENCES estudante(pesquisasEstudante) ON DELETE CASCADE,
+);
+
+CREATE TABLE IF NOT EXISTS trabalhos (
+  trabalhoId PRIMARY KEY DEFAULT,
+  nomeTrabalho VARCHAR(100) NOT NULL,
+  tipoTrabalho VARCHAR(50) NOT NULL,
+  trabalho VARCHAR(100) NOT NULL,
+  FOREIGN KEY (trabalhoId) REFERENCES estudante(trabalhosEstudante) ON DELETE CASCADE,
+);
+
+```
 
 ### 3.1.1 BD e Models (Semana 5)
 *Descreva aqui os Models implementados no sistema web*
@@ -85,7 +150,13 @@ T - Testável: O usuário pode fazer login com e-mail e senha. Login falha com s
 
 ### 3.3. Wireframes (Semana 03)
 
-*Posicione aqui as imagens do wireframe construído para sua solução e, opcionalmente, o link para acesso (mantenha o link sempre público para visualização).*
+![Persona](/Assets/Login.png)
+![Persona](/Assets/pesquisa.png)
+![Persona](/Assets/projetos.png)
+![Persona](/Assets/provas.png)
+![Persona](/Assets/trabalho.png)
+
+https://www.figma.com/design/C16kjjconWH2mnR5z81hOL/Untitled?node-id=0-1&t=U17R1BCYeP1GQa2J-1
 
 ### 3.4. Guia de estilos (Semana 05)
 
