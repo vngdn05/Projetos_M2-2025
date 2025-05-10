@@ -154,7 +154,7 @@ CREATE TABLE IF NOT EXISTS trabalhos (
 ![Persona](/Assets/Login.png)
 ![Persona](/Assets/pesquisa.png)
 ![Persona](/Assets/projetos.png)
-![Persona](/Assets/provas.png)
+![Persona](/Assets/aulas.png)
 ![Persona](/Assets/trabalho.png)
 
 https://www.figma.com/design/C16kjjconWH2mnR5z81hOL/Untitled?node-id=0-1&t=U17R1BCYeP1GQa2J-1
