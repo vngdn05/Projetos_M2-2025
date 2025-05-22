@@ -8,16 +8,7 @@
       <th>Nome</th>
       <th>Email</th>
     </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="3">Carregando usuários...</td>
-    </tr>
-  </tbody>
-</table>
-
-<script>
-  // Função para buscar usuários da API e renderizar na tabela
+  </thead>// Função para buscar usuários da API e renderizar na tabela
   async function fetchUsers() {
     try {
       const response = await fetch('/users');
@@ -51,4 +42,13 @@
 
   // Chama a função ao carregar a página
   fetchUsers();
+  <tbody>
+    <tr>
+      <td colspan="3">Carregando usuários...</td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+  
 </script>
