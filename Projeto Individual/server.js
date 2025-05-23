@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 const db = require('./config/db');
 const app = require('./app');
-const PORT = process.env.PORT || 3000; // estava dando um problema com ocupação da porta 3000
+const PORT = process.env.PORT || 3001; // estava dando um problema com ocupação da porta 3000
 
 // Middlewares
 app.use(express.json());

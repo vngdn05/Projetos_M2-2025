@@ -65,4 +65,4 @@ const estudantesController = {
   }
 };
 
-module.exports
+module.exports = estudantesController
