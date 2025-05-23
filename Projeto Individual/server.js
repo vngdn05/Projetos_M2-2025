@@ -1,19 +1,38 @@
-// server.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const routes = require('./routes');
+require('dotenv').config();
 
-const app = express();
-const port = 3000;
+const express = require('express');
+const path = require('path');
+const db = require('./config/db');
+const app = require('./app');
+const PORT = process.env.PORT || 3000; // estava dando um problema com ocupação da porta 3000
 
 // Middlewares
-app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
-// Usando as rotas definidas
-app.use('/api', routes);
+// EJS
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+// Rotas
+const routes = require('./routes/index');
+app.use('/', routes);
+
+// 404
+app.use((req, res) => res.status(404).send('Página não encontrada'));
+
+// Tratamento de erros
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Erro no servidor');
 });
+
+db.connect()
+  .then(client => {
+    client.release();
+    console.log('Conectado ao banco de dados PostgreSQL');
+  })
+  .catch(err => {
+    console.error('[DEBUG] db.connect() rejeitou:', err);
+    process.exit(1);
+  });
