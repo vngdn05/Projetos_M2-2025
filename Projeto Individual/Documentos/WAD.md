@@ -136,41 +136,47 @@ CREATE TABLE IF NOT EXISTS trabalhos (
 ```
 
 ### 3.1.1 BD e Models (Semana 5)
-*Descreva aqui os Models implementados no sistema web*
+Cada Model implementado no sistema WEB esta de acordo para cada tabela do banco de dados, para que possa administrar as funções CRUD para cada tabela. Foram criados os models: academicos, aulas, estudantes, pesquisas, projetos, trabalhos e usuarios. Todos tem as funções CRUD mais algumas para endpoint
 
 ### 3.2. Arquitetura (Semana 5)
 
-*Posicione aqui o diagrama de arquitetura da sua solução de aplicação web. Atualize sempre que necessário.*
 
-**Instruções para criação do diagrama de arquitetura**  
-- **Model**: A camada que lida com a lógica de negócios e interage com o banco de dados.
-- **View**: A camada responsável pela interface de usuário.
-- **Controller**: A camada que recebe as requisições, processa as ações e atualiza o modelo e a visualização.
-  
-*Adicione as setas e explicações sobre como os dados fluem entre o Model, Controller e View.*
+![Diagrama](/Assets/Diagrama_MVC.png)  
+
+
 
 ### 3.3. Wireframes (Semana 03)
 
-![Persona](/Assets/Login.png)
-![Persona](/Assets/pesquisa.png)
-![Persona](/Assets/projetos.png)
-![Persona](/Assets/aulas.png)
-![Persona](/Assets/trabalho.png)
+![Login](/Assets/Wireframe_Low/Login.png)
+![Pesquisas](/Assets/Wireframe_Low/pesquisa.png)
+![Projetos](/Assets/Wireframe_Low/projetos.png)
+![Aulas](/Assets/Wireframe_Low/aulas.png)
+![Trabalhos](/Assets/Wireframe_Low/trabalho.png)
+![Perfil](/Assets/Wireframe_Low/perfil.png)
+
 
 https://www.figma.com/design/C16kjjconWH2mnR5z81hOL/Untitled?node-id=0-1&t=U17R1BCYeP1GQa2J-1
 
 ### 3.4. Guia de estilos (Semana 05)
 
-*Descreva aqui orientações gerais para o leitor sobre como utilizar os componentes do guia de estilos de sua solução.*
+![Guia de estilos](/assets/G_E.png)
+https://www.figma.com/design/C16kjjconWH2mnR5z81hOL/Untitled?node-id=0-1&t=U17R1BCYeP1GQa2J-1
 
 
 ### 3.5. Protótipo de alta fidelidade (Semana 05)
 
-*Posicione aqui algumas imagens demonstrativas de seu protótipo de alta fidelidade e o link para acesso ao protótipo completo (mantenha o link sempre público para visualização).*
+![Login](/Assets/Wireframe_High/Login.png)
+![Pesquisas](/Assets/Wireframe_High/pesquisas.png)
+![Projetos](/Assets/Wireframe_High/projetos.png)
+![Aulas](/Assets/Wireframe_High/aulas.png)
+![Trabalhos](/Assets/Wireframe_High/trabalho.png)
+![Perfil](/Assets/Wireframe_High/perfil.png)
+
+https://www.figma.com/design/C16kjjconWH2mnR5z81hOL/Projeto-Individual?node-id=0-1&t=kiHHEzmtR7jS4DV5-1
 
 ### 3.6. WebAPI e endpoints (Semana 05)
 
-*Utilize um link para outra página de documentação contendo a descrição completa de cada endpoint. Ou descreva aqui cada endpoint criado para seu sistema.*  
+https://docs.google.com/document/d/1rzp63SC_T4Z9v2SGFPbcqLskRPLD2CFCzjAplWPOxIU/edit?usp=sharing
 
 ### 3.7 Interface e Navegação (Semana 07)
 

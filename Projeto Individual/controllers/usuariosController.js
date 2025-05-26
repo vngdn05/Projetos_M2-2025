@@ -20,16 +20,10 @@ exports.criarUsuario = async (req, res) => {
   } = req.body;
 
   try {
-    await usuariosModel.create(
-      academico === 'on',
-      email_academico,
-      senha_academico,
-      estudante === 'on',
-      email_estudante,
-      senha_estudante
-    );
-    res.redirect('/usuarios');
-  } catch (err) {
+    await usuariosModel.create(academico === 'on', email_academico, senha_academico, estudante === 'on', email_estudante, senha_estudante);
+    res.redirect('/usuarios')
+  } 
+  catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
