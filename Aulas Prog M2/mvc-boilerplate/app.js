@@ -17,6 +17,9 @@ app.get('/', (req, res) => {
   res.redirect('/alunos');
 });
 
+const indexRoutes = require('./routes/index');
+app.use('/', indexRoutes);
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
