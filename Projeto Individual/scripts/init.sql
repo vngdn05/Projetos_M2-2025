@@ -4,7 +4,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
 -- Criar tabela de usuários com UUID como chave primária
-CREATE TABLE IF NOT EXISTS user (
+CREATE TABLE IF NOT EXISTS usuarios (
   userId UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   academico BOOLEAN NOT NULL DEFAULT FALSE,
   email_a VARCHAR(100) UNIQUE NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS academico (
   academicoId PRIMARY KEY DEFAULT,
   aulasAcademico BOOLEAN NOT NULL DEFAULT FALSE,
   projetosAcademico BOOLEAN NOT NULL DEFAULT FALSE,
-  FOREIGN KEY (academicoId) REFERENCES user(userId) ON DELETE CASCADE,
+  FOREIGN KEY (academicoId) REFERENCES usuarios(userId) ON DELETE CASCADE,
 );
 
 CREATE TABLE IF NOT EXISTS aulas (

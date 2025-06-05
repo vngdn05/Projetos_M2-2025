@@ -19,7 +19,6 @@
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
 O projeto individual do módulo 2 será uma pagina que estudantes e professores de química possam se organizar da melhor maneira possível gerando uma produtividade elevada para a conclusão de projetos, trabalhos, provas e conseguir tirar duvidas acessando informações organizadas no site. Sendo assim, o meu projeto visa seguir a primeira opção Um agente de inteligencial artificial (IA) auxiliriará estudantes e profissinais com duvidas de matéria de química. 
-O projeto individual do módulo 2 será uma pagina que estudantes e professores de química possam se organizar da melhor maneira possível gerando uma produtividade elevada para a conclusão de projetos, trabalhos, provas e conseguir tirar duvidas acessando informações organizadas no site. Sendo assim, o meu projeto visa seguir a primeira opção Um agente de inteligencial artificial (IA) auxiliriará estudantes e profissinais com duvidas de matéria de química. 
 
 ---
 

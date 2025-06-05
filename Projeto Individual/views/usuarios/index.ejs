@@ -1,59 +1,24 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Usuários Cadastrados</title>
-  <style>
-    table { border-collapse: collapse; width: 100%; }
-    th, td { padding: .4rem .8rem; border: 1px solid #666; text-align: left; }
-    form.inline { display: inline; margin: 0 .2rem; }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+  <title>Login</title>
 </head>
 <body>
-  <h1>Usuários Cadastrados</h1>
-
-  <table>
-    <thead>
-      <tr>
-        <th>User ID</th>
-        <th>Acadêmico?</th>
-        <th>Email Acadêmico</th>
-        <th>Senha Acadêmico</th>
-        <th>Estudante?</th>
-        <th>Email Estudante</th>
-        <th>Senha Estudante</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% usuarios.forEach(u => { %>
-        <tr>
-          <td><%= u.user_id %></td>
-          <td><%= u.academico ? 'Sim' : 'Não' %></td>
-          <td><%= u.email_academico || '' %></td>
-          <td><%= u.senha_academico || '' %></td>
-          <td><%= u.estudante ? 'Sim' : 'Não' %></td>
-          <td><%= u.email_estudante || '' %></td>
-          <td><%= u.senha_estudante || '' %></td>
-        </tr>
-      <% }) %>
-    </tbody>
-  </table>
-
-  <h2>Cadastrar Novo Usuário</h2>
-  <form action="/usuarios" method="POST">
-    <label>
-      <input type="checkbox" name="academico" /> Acadêmico
-    </label><br />
-    <input name="email_academico" placeholder="Email acadêmico" /><br />
-    <input name="senha_academico" placeholder="Senha acadêmico" /><br />
-
-    <label>
-      <input type="checkbox" name="estudante" /> Estudante
-    </label><br />
-    <input name="email_estudante" placeholder="Email estudante" /><br />
-    <input name="senha_estudante" placeholder="Senha estudante" /><br />
-
-    <button type="submit">Adicionar</button>
-  </form>
+  <div>
+    <img src="/images/logo.png" alt="Logo" style="width: 100px; height: auto;">
+    <form action="/login" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <button type="submit">Login</button>
+  </div>
 </body>
 </html>

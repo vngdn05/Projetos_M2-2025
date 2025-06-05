@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+
+// Certifique-se de que este arquivo existe e exporta as funções corretamente!
 const usuariosController = require('../controllers/usuariosController');
 const academicosController = require('../controllers/academicosController');
 const aulasController = require('../controllers/aulasController');
@@ -10,7 +12,7 @@ const trabalhosController = require('../controllers/trabalhosController');
 
 // Rota inicial
 router.get('/', (req, res) => {
-  res.redirect('/usuarios');
+  res.redirect('/login');
 });
 
 // Rotas de Usuários
