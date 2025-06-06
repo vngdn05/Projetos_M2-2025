@@ -4,7 +4,8 @@ const trabalhosController = {  // Mudei o nome do objeto para trabalhosControlle
   async listarTodos(req, res) {
     try {
       const trabalhos = await TrabalhosModel.getAll();
-      res.json(trabalhos);
+      // Renderiza a view correta da pasta layout, mantendo o nome "trabalhos"
+      res.render('layout/trabalhos', { trabalhos });
     } catch (error) {
       res.status(500).json({ 
         error: 'Erro ao listar trabalhos',

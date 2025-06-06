@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - <%= perfil ? perfil.nome || perfil.name : '' %></title>
+    <link rel="stylesheet" href="/css/perfil.css">
+</head>
+<body>
+    <div class="profile-content">
+        <header class="profile-header">
+            <div class="profile-icon">
+                <img src="/icon.png" alt="Ícone">
+            </div>
+            <nav class="profile-nav">
+                <a href="/trabalhos">Trabalhos</a>
+                <a href="/projetos">Projetos</a>
+                <a href="/pesquisas">Pesquisas</a>
+                <a href="/aulas">Aulas</a>
+            </nav>
+        </header>
+
+        <main class="profile-details-container">
+            <section class="profile-main-info">
+                <div class="profile-pic-container">
+                     <img src="/profile-pic.jpg" alt="Foto de <%= perfil ? perfil.nome || perfil.name : '' %>">
+                </div>
+                <div class="profile-text-info">
+                    <h2><%= perfil ? perfil.nome || perfil.name : '' %></h2>
+                    <p class="title">
+                        <% if (tipo === 'academico') { %>
+                            Professor(a)
+                        <% } else { %>
+                            Estudante
+                        <% } %>
+                    </p>
+                    <p class="contact"><%= perfil ? perfil.email : '' %></p>
+                    <% if (perfil && perfil.curso) { %>
+                        <p class="contact"><%= perfil.curso %></p>
+                    <% } %>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-box">
+                        <span class="number">1</span>
+                        <span class="label">total de tarefas</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">0</span>
+                        <span class="label">concluídas</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">1</span>
+                        <span class="label">em processo</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="number">0%</span>
+                        <span class="label">taxa de conclusao</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="profile-summary">
+                <div class="summary-box">
+                    <span class="number">0</span>
+                    <span class="label">trabalho</span>
+                </div>
+                <div class="summary-box">
+                    <span class="number">0</span>
+                    <span class="label">pesquisa</span>
+                </div>
+                <div class="summary-box">
+                    <span class="number">0</span>
+                    <span class="label">projetos</span>
+                </div>
+                <div class="summary-box">
+                    <span class="number">1</span>
+                    <span class="label">aulas</span>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

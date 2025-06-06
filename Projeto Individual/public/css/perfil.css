@@ -1,0 +1,165 @@
+.profile-content {
+    flex-grow: 1;
+    background-color: #f8f9fa;
+}
+
+.profile-header {
+    background-color: #1ED760;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.profile-icon img {
+    width: 30px;
+}
+
+.profile-nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 30px;
+    font-size: 1.1em;
+}
+
+.profile-details-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.profile-main-info {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.profile-pic-container img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+.profile-text-info {
+    padding-top: 10px;
+}
+
+.profile-text-info h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.8em;
+}
+
+.profile-text-info .title {
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+    color: #555;
+}
+
+.profile-text-info .contact {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.profile-stats {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.stat-box {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.stat-box .number {
+    font-size: 1.8em;
+    font-weight: bold;
+    display: block;
+}
+
+.stat-box .label {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.profile-summary {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.summary-box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.summary-box .number {
+    font-size: 3em;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.summary-box .label {
+    font-size: 1.1em;
+    color: #555;
+    text-transform: capitalize;
+}
+
+/* Responsividade para ambas as páginas */
+@media (max-width: 768px) {
+  /* Responsividade do Dashboard */
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+    padding: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar-nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .sidebar-nav li {
+    margin-bottom: 0;
+  }
+
+  .main-content {
+    padding: 1rem;
+  }
+
+  .trabalhos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Responsividade da página de Login */
+  .login-container {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+}

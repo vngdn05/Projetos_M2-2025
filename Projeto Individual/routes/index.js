@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Certifique-se de que este arquivo existe e exporta as funções corretamente!
+const loginController = require('../controllers/loginController');
 const usuariosController = require('../controllers/usuariosController');
 const academicosController = require('../controllers/academicosController');
 const aulasController = require('../controllers/aulasController');
@@ -9,11 +10,19 @@ const projetosController = require('../controllers/projetosController');
 const estudantesController = require('../controllers/estudantesController');
 const pesquisasController = require('../controllers/pesquisasController');
 const trabalhosController = require('../controllers/trabalhosController');
+const perfilController = require('../controllers/perfilController');
 
 // Rota inicial
 router.get('/', (req, res) => {
   res.redirect('/login');
 });
+
+// Adicione esta rota para exibir o formulário de login
+router.get('/login', (req, res) => {
+  res.render('layout/login');
+});
+
+router.post('/login', loginController.login);
 
 // Rotas de Usuários
 router.get('/usuarios', usuariosController.listarUsuarios);
@@ -63,5 +72,8 @@ router.put('/trabalhos/:id', trabalhosController.atualizar);
 router.delete('/trabalhos/:id', trabalhosController.deletar);
 router.get('/trabalhos/estudante/:estudante_id', trabalhosController.listarPorEstudante);
 router.get('/trabalhos/disciplina/:disciplina_id', trabalhosController.listarPorDisciplina);
+
+// Rota para exibir o perfil
+router.get('/perfil', perfilController.mostrarPerfil);
 
 module.exports = router;

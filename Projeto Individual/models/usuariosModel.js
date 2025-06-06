@@ -8,19 +8,10 @@ module.exports = {
     return result.rows;
   },
 
-  async create(academico, email_academico, senha_academico, estudante, email_estudante, senha_estudante){
-    // Corrigido para campos do banco: email_a, senha_a, email_e, senha_e
-    const query = `INSERT INTO usuarios (
-        academico, email_a, senha_a,
-        estudante, email_e, senha_e) VALUES ($1, $2, $3, $4, $5, $6)`;
-    const values = [
-      academico,
-      email_academico,
-      senha_academico,
-      estudante,
-      email_estudante,
-      senha_estudante,
-    ];
+  async create({ tipo }) {
+    // Insere apenas o campo 'tipo' na tabela usuarios
+    const query = `INSERT INTO usuarios (tipo) VALUES ($1)`;
+    const values = [tipo];
     await db.query(query, values);
   }
 };
