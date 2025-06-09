@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Se Organize</title>
-    <link rel="stylesheet" href="/css/trabalhos.css">
+    <title>Dashboard - Aulas</title>
+    <link rel="stylesheet" href="/css/aulas.css">
 </head>
 <body class="dashboard-page">
     <div class="dashboard-container">
         <aside class="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
+                    <!-- SVG igual ao de trabalhos -->
                     <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <rect x="25" y="20" width="50" height="60" rx="5" fill="white" stroke="#333" stroke-width="2"/>
                         <rect x="15" y="15" width="10" height="15" rx="5" fill="#2196F3"/>
@@ -23,93 +24,82 @@
                     </svg>
                 </div>
             </div>
-            
             <nav class="sidebar-nav">
                 <ul>
-                    <li><a href="/trabalhos" class="nav-item active">Trabalhos</a></li>
+                    <li><a href="/trabalhos" class="nav-item">Trabalhos</a></li>
                     <li><a href="/projetos" class="nav-item">Projetos</a></li>
                     <li><a href="/pesquisas" class="nav-item">Pesquisas</a></li>
-                    <li><a href="/aulas" class="nav-item">Aulas</a></li>
+                    <li><a href="/aulas" class="nav-item active">Aulas</a></li>
                 </ul>
             </nav>
         </aside>
-        
         <main class="main-content">
             <header class="main-header">
                 <h1>Olá, se Organize!</h1>
             </header>
-            
             <section class="content-section">
                 <div class="section-header">
-                    <h2>Trabalhos <span class="expand-icon">^</span></h2>
+                    <h2>Aulas <span class="expand-icon">^</span></h2>
                 </div>
-                
                 <div class="trabalhos-grid">
-                    <% if (trabalhos && trabalhos.length > 0) { %>
-                        <% trabalhos.forEach(function(trabalho) { %>
+                    <% if (aulas && aulas.length > 0) { %>
+                        <% aulas.forEach(function(aula) { %>
                             <div class="trabalho-card">
                                 <div class="trabalho-icon">
                                     <div class="icon-circle"></div>
                                 </div>
                                 <div class="trabalho-info">
-                                    <h3><%= trabalho.titulo %></h3>
-                                    <p><%= trabalho.descricao %></p>
+                                    <h3><%= aula.disciplina %></h3>
+                                    <p><%= aula.descricao %></p>
                                 </div>
                             </div>
                         <% }); %>
                     <% } %>
-                    <!-- Botão de adicionar como um card -->
                     <div class="trabalho-card add-trabalho">
-                        <button class="add-btn" id="openAddModal" title="Adicionar trabalho">
+                        <button class="add-btn" id="openAddModalAula" title="Adicionar aula">
                             <span class="plus-icon">+</span>
                         </button>
+                    </div>
+                </div>
+                <!-- Modal para adicionar aula -->
+                <div id="addModalAula" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="close" id="closeAddModalAula">&times;</span>
+                        <h2>Nova Aula</h2>
+                        <form id="addAulaForm">
+                            <label for="disciplina">Disciplina:</label>
+                            <input type="text" id="disciplina" name="disciplina" required>
+                            <label for="descricao">Descrição:</label>
+                            <input type="text" id="descricao" name="descricao">
+                            <button type="submit">Adicionar</button>
+                        </form>
                     </div>
                 </div>
             </section>
         </main>
     </div>
 
-    <!-- Modal para adicionar trabalho -->
-    <div id="addModal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="close" id="closeAddModal">&times;</span>
-            <h2>Novo Trabalho</h2>
-            <form id="addTrabalhoForm">
-                <label for="titulo">Título:</label>
-                <input type="text" id="titulo" name="titulo" required>
-                <label for="descricao">Descrição:</label>
-                <input type="text" id="descricao" name="descricao">
-                <button type="submit">Adicionar</button>
-            </form>
-        </div>
-    </div>
     <script>
-        // Abrir modal
-        document.getElementById('openAddModal').onclick = function() {
-            document.getElementById('addModal').style.display = 'block';
+        document.getElementById('openAddModalAula').onclick = function() {
+            document.getElementById('addModalAula').style.display = 'block';
         };
-        // Fechar modal
-        document.getElementById('closeAddModal').onclick = function() {
-            document.getElementById('addModal').style.display = 'none';
+        document.getElementById('closeAddModalAula').onclick = function() {
+            document.getElementById('addModalAula').style.display = 'none';
         };
-        // Fechar modal ao clicar fora
         window.onclick = function(event) {
-            if (event.target == document.getElementById('addModal')) {
-                document.getElementById('addModal').style.display = 'none';
+            if (event.target == document.getElementById('addModalAula')) {
+                document.getElementById('addModalAula').style.display = 'none';
             }
         };
-        // Enviar formulário via fetch
-        document.getElementById('addTrabalhoForm').onsubmit = async function(e) {
+        document.getElementById('addAulaForm').onsubmit = async function(e) {
             e.preventDefault();
             const data = {
-                titulo: this.titulo.value,
-                descricao: this.descricao.value || '', // nunca undefined
-                estudante_id: 1, // valor fixo, ajuste conforme necessário
-                disciplina_id: 1, // valor fixo, ajuste conforme necessário
-                data_entrega: new Date().toISOString().split('T')[0], // data padrão (hoje)
-                arquivo_url: "" // string vazia, nunca undefined
+                professor_id: 1, // valor fixo, ajuste conforme necessário
+                disciplina: this.disciplina.value,
+                descricao: this.descricao.value || '',
+                data_aula: new Date().toISOString().split('T')[0]
             };
-            const resp = await fetch('/trabalhos', {
+            const resp = await fetch('/aulas', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
@@ -117,12 +107,11 @@
             if (resp.ok) {
                 window.location.reload();
             } else {
-                alert('Erro ao adicionar trabalho');
+                alert('Erro ao adicionar aula');
             }
         };
     </script>
     <style>
-        /* Modal básico */
         .modal {
             display: none;
             position: fixed;

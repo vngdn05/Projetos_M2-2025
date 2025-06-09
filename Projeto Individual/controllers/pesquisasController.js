@@ -4,7 +4,8 @@ const pesquisasController = {
   async listarTodos(req, res) {
     try {
       const pesquisas = await Pesquisas.getAll();
-      res.json(pesquisas);
+      // Renderiza a view e passa as pesquisas
+      res.render('layout/pesquisas', { pesquisas });
     } catch (error) {
       res.status(500).json({ error: 'Erro ao listar pesquisas' });
     }

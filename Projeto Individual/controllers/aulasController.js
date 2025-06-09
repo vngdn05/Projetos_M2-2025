@@ -5,7 +5,8 @@ const aulasController = {
   async listarTodas(req, res) {
     try {
       const aulas = await Aulas.getAll();
-      res.json(aulas);
+      // Renderiza a view e passa as aulas
+      res.render('layout/aulas', { aulas });
     } catch (error) {
       res.status(500).json({ error: 'Erro ao listar aulas' });
     }

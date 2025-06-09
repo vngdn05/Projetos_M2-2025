@@ -4,7 +4,8 @@ const projetosController = {
   async listarTodos(req, res) {
     try {
       const projetos = await Projetos.getAll();
-      res.json(projetos);
+      // Renderiza a view e passa os projetos
+      res.render('layout/projetos', { projetos });
     } catch (error) {
       res.status(500).json({ error: 'Erro ao listar projetos' });
     }

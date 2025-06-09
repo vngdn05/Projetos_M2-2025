@@ -34,18 +34,20 @@ const trabalhosController = {  // Mudei o nome do objeto para trabalhosControlle
 
   async criar(req, res) {
     try {
-      if (!req.body.titulo || !req.body.estudante_id || !req.body.disciplina_id) {
-        return res.status(400).json({ 
-          error: 'Título, ID do estudante e ID da disciplina são obrigatórios' 
+      const { titulo, estudante_id, disciplina_id, data_entrega, arquivo_url } = req.body;
+      if (!titulo || !estudante_id || !disciplina_id || !data_entrega || arquivo_url === undefined) {
+        return res.status(400).json({
+          error: 'Título, ID do estudante, ID da disciplina, data de entrega e arquivo_url são obrigatórios'
         });
       }
 
       const novoTrabalho = await TrabalhosModel.create(req.body);
       res.status(201).json(novoTrabalho);
     } catch (error) {
+      console.error('Erro ao criar trabalho:', error); // Adicione este log
       res.status(500).json({ 
         error: 'Erro ao criar trabalho',
-        details: error.message 
+        details: error.message // Mostra o erro real do banco
       });
     }
   },

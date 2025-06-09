@@ -1,3 +1,4 @@
+/* ...copie todo o conteúdo de trabalhos.css aqui... */
 /* Reset e estilos base */
 * {
   margin: 0;
@@ -83,9 +84,19 @@ body {
   font-weight: 600;
 }
 
-/* Remover perfil da sidebar */
+/* Rodapé da sidebar com foto de perfil */
 .sidebar-footer {
-  display: none !important;
+  padding: 1rem;
+  text-align: center;
+  margin-top: auto;
+}
+
+.profile-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
 }
 
 /* Conteúdo Principal do Dashboard */
@@ -133,9 +144,9 @@ body {
 /* Grid de trabalhos */
 .trabalhos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: 1fr 1fr auto;
   gap: 2rem;
-  align-items: stretch;
+  align-items: start;
 }
 
 /* Cards de trabalho */
@@ -146,14 +157,9 @@ body {
   padding: 1.5rem;
   border: 2px solid #333;
   border-radius: 15px;
-  background: white;
   transition: all 0.3s ease;
   cursor: pointer;
-  min-width: 0;
-  min-height: 120px;
-  height: 100%;
-  width: 100%;
-  box-sizing: border-box;
+  background: white;
 }
 
 .trabalho-card:hover {
@@ -197,12 +203,6 @@ body {
 }
 
 /* Botão de adicionar trabalho */
-.add-trabalho {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .trabalho-card.add-trabalho {
   display: flex;
   align-items: center;
