@@ -179,7 +179,59 @@ https://docs.google.com/document/d/1rzp63SC_T4Z9v2SGFPbcqLskRPLD2CFCzjAplWPOxIU/
 
 ### 3.7 Interface e Navegação (Semana 07)
 
-*Descreva e ilustre aqui o desenvolvimento do frontend do sistema web, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+O frontend do sistema web foi desenvolvido utilizando a engine de templates **EJS** para renderização dinâmica das páginas, combinando **HTML**, **CSS** e **JavaScript** para criar uma interface moderna, responsiva e funcional. A seguir, estão descritas as principais entregas e características do frontend:
+
+---
+
+#### **Estrutura das Páginas**
+
+- **Templates EJS**: Cada área do sistema possui um arquivo `.ejs` dedicado na pasta `views/layout/`, como `trabalhos.ejs`, `projetos.ejs`, `pesquisas.ejs`, `aulas.ejs`, `perfil.ejs` e `login.ejs`. Esses arquivos definem a estrutura HTML das páginas e permitem a inserção dinâmica de dados vindos do backend.
+- **Componentização**: Elementos reutilizáveis, como o cabeçalho de navegação, estão em `views/components/header.ejs`, facilitando a manutenção e padronização visual.
+
+---
+
+#### **Estilo Visual**
+
+- **CSS Modularizado**: Cada área possui seu próprio arquivo CSS na pasta `public/css/` (`trabalhos.css`, `projetos.css`, etc.), garantindo estilos específicos e responsivos para cada página.
+- **Design Responsivo**: O layout foi projetado para funcionar bem em diferentes tamanhos de tela, com uso de grids e media queries.
+
+---
+
+#### **Funcionalidades e Interatividade**
+
+- **Sidebar de Navegação**: Todas as páginas de dashboard possuem uma sidebar fixa para navegação entre as seções do sistema.
+- **Cards e Grids**: Os conteúdos principais (trabalhos, projetos, pesquisas, aulas) são exibidos em grids de cards, facilitando a visualização e organização.
+- **Modais de Cadastro**: Para adicionar novos itens (trabalho, projeto, pesquisa, aula), são utilizados modais customizados, abertos e fechados via JavaScript, com formulários que enviam dados via `fetch` para o backend.
+- **Página de Perfil**: Exibe informações do usuário, estatísticas e navegação rápida para as áreas do sistema.
+- **Página de Login**: Interface amigável e moderna para autenticação, com campos validados e design consistente.
+
+---
+
+#### **Exemplo Visual do Dashboard**
+
+```html
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <nav class="sidebar-nav">
+      <ul>
+        <li><a href="/trabalhos" class="nav-item">Trabalhos</a></li>
+        <li><a href="/projetos" class="nav-item">Projetos</a></li>
+        <li><a href="/pesquisas" class="nav-item">Pesquisas</a></li>
+        <li><a href="/aulas" class="nav-item">Aulas</a></li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <header class="main-header">
+      <h1>Olá, se Organize!</h1>
+    </header>
+    <section class="content-section">
+      <div class="trabalhos-grid">
+        <!-- Cards de conteúdo renderizados dinamicamente -->
+      </div>
+    </section>
+  </main>
+</div>
 
 ---
 
