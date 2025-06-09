@@ -232,7 +232,7 @@ O frontend do sistema web foi desenvolvido utilizando a engine de templates **EJ
     </section>
   </main>
 </div>
-
+```
 ---
 
 ## <a name="c4"></a>4. Desenvolvimento da Aplicação Web (Semana 8)
