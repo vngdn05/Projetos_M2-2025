@@ -242,7 +242,7 @@ O frontend do sistema web foi desenvolvido utilizando a engine de templates **EJ
 <div align="center">
 
   <video width="600" controls>
-    <source src="assets/Video.mp4" type="video/mp4">
+    <source src="../assets/Video.mp4" type="video/mp4">
   </video>
 
 </div>
