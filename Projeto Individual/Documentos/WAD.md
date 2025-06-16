@@ -18,7 +18,7 @@
 
 ## <a name="c1"></a>1. Introdução (Semana 01)
 
-O projeto individual do módulo 2 será uma pagina que estudantes e professores de química possam se organizar da melhor maneira possível gerando uma produtividade elevada para a conclusão de projetos, trabalhos, provas e conseguir tirar duvidas acessando informações organizadas no site. Sendo assim, o meu projeto visa seguir a primeira opção Um agente de inteligencial artificial (IA) auxiliriará estudantes e profissinais com duvidas de matéria de química. 
+O projeto individual do módulo 2 será uma pagina que estudantes e professores de química possam se organizar da melhor maneira possível gerando uma produtividade elevada para a conclusão de projetos, trabalhos, provas e conseguir tirar duvidas acessando informações organizadas no site. Sendo assim, o meu projeto visa seguir a primeira opção dos projetos propostos.
 
 ---
 
@@ -239,13 +239,155 @@ O frontend do sistema web foi desenvolvido utilizando a engine de templates **EJ
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
 
-*VIDEO: Insira o link do vídeo demonstrativo nesta seção*
-*Descreva e ilustre aqui o desenvolvimento do sistema web completo, explicando brevemente o que foi entregue em termos de código e sistema. Utilize prints de tela para ilustrar.*
+<div align="center">
+
+  <video width="600" controls>
+    <source src="assets/Video.mp4" type="video/mp4">
+  </video>
+
+</div>
+
+A ideia de desenvolver esse sistema web é para que alunos e professores possam administrar suas atividades diárias de forma mais organizada e eficiente. Com isso, em termos de código, foi criado um banco de dados para armazenar as informações dos usuários, como nome, email, senha, etc. A partir disso, foi criado um arquivo de model, controller e router para cada tabela do banco de dados, para que possa administrar as funções CRUD para cada tabela e para que o usuário possa interagir com seus projetos da maneira que preferir. 
+
+- Exemplo de controller:
+```javascript
+const Aulas = require('../models/aulasModel'); // Importa o modelo de aulas
+
+const aulasController = {
+  // Listar todas as aulas
+  async listarTodas(req, res) {
+    try {
+      const aulas = await Aulas.getAll();
+      // Renderiza a view e passa as aulas
+      res.render('layout/aulas', { aulas });
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao listar aulas' });
+    }
+  },
+
+  // Buscar aula por ID
+  async buscarPorId(req, res) {
+    try {
+      const { id } = req.params;
+      const aula = await Aulas.getById(id);
+
+      if (!aula) {
+        return res.status(404).json({ error: 'Aula não encontrada' });
+      }
+
+      res.json(aula);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao buscar aula' });
+    }
+  },
+
+  // Criar nova aula
+  async criar(req, res) {
+    try {
+      const novaAula = await Aulas.create(req.body);
+      res.status(201).json(novaAula);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao criar aula' });
+    }
+  },
+
+  // Atualizar aula
+  async atualizar(req, res) {
+    try {
+      const { id } = req.params;
+      const aulaAtualizada = await Aulas.update(id, req.body);
+
+      if (!aulaAtualizada) {
+        return res.status(404).json({ error: 'Aula não encontrada' });
+      }
+
+      res.json(aulaAtualizada);
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao atualizar aula' });
+    }
+  },
+
+  // Deletar aula
+  async deletar(req, res) {
+    try {
+      const { id } = req.params;
+      const deletado = await Aulas.delete(id);
+
+      if (!deletado) {
+        return res.status(404).json({ error: 'Aula não encontrada' });
+      }
+
+      res.status(204).end();
+    } catch (error) {
+      res.status(500).json({ error: 'Erro ao deletar aula' });
+    }
+  }
+};
+
+module.exports = aulasController;
+```
+
+- Exemplo de Model:
+```javascript
+const db = require('../config/db');
+
+class Aulas {
+  // Listar todas as aulas
+  static async getAll() {
+    const result = await db.query('SELECT * FROM aulas');
+    return result.rows;
+  }
+
+  // Buscar aula por ID
+  static async getById(id) {
+    const result = await db.query('SELECT * FROM aulas WHERE id = $1', [id]);
+    return result.rows[0];
+  }
+
+  // Criar uma nova aula
+  static async create(data) {
+    const result = await db.query(
+      'INSERT INTO aulas (professor_id, disciplina, data_aula, descricao) VALUES ($1, $2, $3, $4) RETURNING *',
+      [data.professor_id, data.disciplina, data.data_aula, data.descricao]
+    );
+    return result.rows[0];
+  }
+
+  // Atualizar uma aula
+  static async update(id, data) {
+    const result = await db.query(
+      'UPDATE aulas SET professor_id = $1, disciplina = $2, data_aula = $3, descricao = $4 WHERE id = $5 RETURNING *',
+      [data.professor_id, data.disciplina, data.data_aula, data.descricao, id]
+    );
+    return result.rows[0];
+  }
+
+  // Deletar uma aula
+  static async delete(id) {
+    const result = await db.query('DELETE FROM aulas WHERE id = $1 RETURNING *', [id]);
+    return result.rowCount > 0;
+  }
+}
+
+module.exports = Aulas;
+```
+
+- Exemplo de Router:
+```javascript
+router.get('/aulas/:id', aulasController.buscarPorId);
+router.post('/aulas', aulasController.criar);
+router.put('/aulas/:id', aulasController.atualizar);
+router.delete('/aulas/:id', aulasController.deletar);
+```
 
 ### 4.2 Conclusões e Trabalhos Futuros (Semana 8)
 
-*Indique pontos fortes e pontos a melhorar de maneira geral.*
-*Relacione também quaisquer outras ideias que você tenha para melhorias futuras.*
+O Back-end do sistema web esta bem estruturado e o guia de estilos e desgin do site esta pronto, porém para que a experiência do usuário seja mais agradável, é necessário implementar o todas as funcionalidades do back-end no front-end. No futuro, para alcançar o máximo do pontencial do site será necessário implementar um sistema de autenticação, para que o usuário possa ter acesso apenas aos seus dados e não aos dados de outros usuários, será necessário criar uma página para que o usúario possa se cadastrar no site, será necessário criar uma pagina de perfil mostrando as informações sobre os projetos do usúario e que atualize conforme o usúario for atualizando seus projetos. Além disso, como uma ideia ainda mais avançada, será interessante adicionar uma inteligência artificial para que o sistema possa ajudar o usuário a organizar seus projetos e atividades.
+
+O bom do site é que toda a base dele esta pronta, e o que falta é apenas implementar as funcionalidades no front-end, o que não será um grande desafio. Porém, a partir do momento em que o site for crescendo deverá acrescentar algumas mudanças, como por exemplo, adicionar um sistema de autenticação, adicionar uma página de cadastro, adicionar uma página de perfil, adicionar uma inteligência artificial, etc. 
+
+---
+
 
 
 
