@@ -239,7 +239,7 @@ O frontend do sistema web foi desenvolvido utilizando a engine de templates **EJ
 
 ### 4.1 Demonstração do Sistema Web (Semana 8)
 
-![Video de demonstração do site](/Assets/Video.mp4)
+![Video de demonstração do site](../Assets/Video.mp4)
 
 A ideia de desenvolver esse sistema web é para que alunos e professores possam administrar suas atividades diárias de forma mais organizada e eficiente. Com isso, em termos de código, foi criado um banco de dados para armazenar as informações dos usuários, como nome, email, senha, etc. A partir disso, foi criado um arquivo de model, controller e router para cada tabela do banco de dados, para que possa administrar as funções CRUD para cada tabela e para que o usuário possa interagir com seus projetos da maneira que preferir. 
 
