@@ -383,11 +383,3 @@ O bom do site é que toda a base dele esta pronta, e o que falta é apenas imple
 ---
 
 
-
-
-## <a name="c5"></a>5. Referências
-
-_Incluir as principais referências de seu projeto, para que seu parceiro possa consultar caso ele se interessar em aprofundar. Um exemplo de referência de livro e de site:_<br>
-
----
----
